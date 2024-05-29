@@ -36,7 +36,7 @@ export default function Home() {
   const handleSearch = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.get('http://localhost:3000/api/mpn/', {
+      const res = await axios.get('/api/mpn/', {
         params: { mpn, make },
         cache: "no-store"
       });
@@ -60,7 +60,7 @@ export default function Home() {
 
   const fetchSubcatDigits = async (categoryToFind) => {
     try {
-      const res = await axios.get('http://localhost:3000/api/category/');
+      const res = await axios.get('/api/category/');
       var data = res.data;
       const w = data.find(cat => cat.category === categoryToFind)
       const num = data.find(cat => cat.category === categoryToFind && cat.subcategory === choosenSubcategory)
@@ -82,7 +82,7 @@ export default function Home() {
     try {
       await fetchSubcatDigits(choosenCategory)
 
-      const res = await axios.get('http://localhost:3000/api/mpn/', {
+      const res = await axios.get('/api/mpn/', {
         params: { choosenCategory, choosenSubcategory },
         cache: "no-store"
       });
@@ -181,7 +181,7 @@ export default function Home() {
       partNumber: newPartNumber
     }
 
-    const res = await axios.post('http://localhost:3000/api/mpn/', updated);
+    const res = await axios.post('/api/mpn/', updated);
     if (res.status === 200) {
       setExistMessage(true)
       setExistString("New part number generated: " + newPartNumber)
@@ -195,7 +195,7 @@ export default function Home() {
 
   useEffect(() => {
     const fetchSubcat = async () => {
-      const res = await axios.get('http://localhost:3000/api/category/')
+      const res = await axios.get('/api/category/')
       const allData = res.data;
       const uniqueSubCategories = [...new Set(allData.map(item => item.subcategory))];
       const filteredSubCategories = Array.from(new Set(
@@ -212,7 +212,7 @@ export default function Home() {
 
   useEffect(() => {
     const fetchMake = async () => {
-      const res = await axios.get('http://localhost:3000/api/addMake')
+      const res = await axios.get('/api/addMake')
       const allmakes = res.data
       const names = allmakes.map((item) => item.name).filter(name => name);
       setMakes(names)
