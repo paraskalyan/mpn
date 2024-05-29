@@ -10,7 +10,7 @@ export default function Login({ setLoggedIn }) {
 
 
     const handleSignIn = async () => {
-        const res = await axios.post('http://localhost:3000/api/userExist/', { username, password })
+        const res = await axios.post('/api/userExist/', { username, password })
         if (res) {
             if (res.status === 200) {
                 setLoggedIn(true)
