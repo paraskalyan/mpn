@@ -9,7 +9,7 @@ export default function View() {
 
     useEffect(() => {
         const fetchData = async () => {
-            const res = await axios.get('http://localhost:3000/api/table/')
+            const res = await axios.get('/api/table/')
             console.log(res.data)
             setData(res.data)
         }
