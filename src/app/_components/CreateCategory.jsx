@@ -61,7 +61,7 @@ export default function CreateCategory({ setCatWindowVisible }) {
             }
             try {
 
-                const res = await axios.post('http://localhost:3000/api/category/', updated)
+                const res = await axios.post('/api/category/', updated)
                 console.log(res.data)
                 console.log(res.data.message)
                 if (res.data.message === 'limit') {
