@@ -11,7 +11,7 @@ export default function CategoryDropdown({ width, label, onValueChange, setCatWi
 
         const fetchData = async () => {
             try {
-                const res = await axios.get('http://localhost:3000/api/category/');
+                const res = await axios.get('/api/category/');
 
                 const allData = res.data;
                 const uniqueCategories = [...new Set(allData.map(item => item.category))];
